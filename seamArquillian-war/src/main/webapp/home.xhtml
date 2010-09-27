@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://jboss.com/products/seam/taglib"
+		xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html" xmlns:rich="http://richfaces.org/rich"
+		xmlns:a="http://richfaces.org/a4j" template="/layout/template.xhtml">
+
+	<ui:define name="center">
+		<rich:panel id="panel">
+			<f:facet name="header">#{messages['title']}</f:facet>
+			
+    		<p>This JBoss Seam Application includes:</p>
+		    <ul>
+		        <li>Maven2 build configuration</li>
+		        <!-- Deployment to JBoss AS 4.2.x  -->
+		        <!-- Integration testing using TestNG -->
+		        <li>EJB 3.0 components</li>
+		        <li>JPA Entities</li>
+		        <li>Generated Testdata</li>
+		        <li>Templated Facelets views</li>
+		        <li>CSS stylesheet</li>
+		        <li>Internationalization support</li>
+		    </ul>
+		</rich:panel>
+	</ui:define>
+</ui:composition>

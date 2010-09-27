@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://jboss.com/products/seam/taglib"
+		xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html" xmlns:rich="http://richfaces.org/rich"
+		xmlns:a="http://richfaces.org/a4j" template="/layout/template.xhtml">
+
+	<ui:define name="center">
+		<h:form id="personEditForm">
+			<rich:panel id="personEditPanel">
+				<f:facet name="header">
+					<h:panelGroup>
+						<h:outputText value="#{messages['person']}" />
+						<h:outputText value="&#160;" />
+						<h:outputText value="#{person.id == null ? messages['general.create'] : person.lastname}" />
+					</h:panelGroup>	
+				</f:facet>
+				
+				<s:decorate id="personFirstnameDecoration" template="/layout/edit.xhtml">
+                	<ui:define name="label">#{messages['person.firstname']}:</ui:define>
+                	<h:inputText required="true" id="firstname" value="#{person.firstname}" style="width:300px;"/>
+            	</s:decorate>
+            	
+            	<s:decorate id="personLastnameDecoration" template="/layout/edit.xhtml">
+                	<ui:define name="label">#{messages['person.lastname']}:</ui:define>
+                	<h:inputText value="#{person.lastname}" required="true" id="lastname" style="width:300px;"/> 
+            	</s:decorate>
+            	
+            	<s:decorate id="personBirthdayDecoration" template="/layout/edit.xhtml">
+                	<ui:define name="label">#{messages['person.birthday']}:</ui:define>
+                	<rich:calendar datePattern="#{messages['formatter.date.long']}" value="#{person.birthday}" required="true" id="birthday" style="width:300px;"/>
+            	</s:decorate>
+            	
+            	<s:decorate id="personGenderDecoration" template="/layout/edit.xhtml">
+                	<ui:define name="label">#{messages['person.gender']}:</ui:define>
+                	
+                	<h:selectOneMenu value="#{person.gender}" required="true" id="genderOption" style="width:300px;">
+                		<s:selectItems var="gender" value="#{gender}" label="#{gender}" id="gender"/>
+                		<s:convertEnum/>
+                	</h:selectOneMenu>
+            	</s:decorate>
+            	
+				<s:decorate template="/layout/buttonbox.xhtml" id="personButtonBox">
+					<h:commandButton action="#{personService.saveOrUpdate(person)}" value="#{messages['general.save']}" id="save"/>
+					<h:commandButton action="#{personService.delete(person)}" value="#{messages['general.delete']}" id="delete"/>
+					<s:button action="#{personService.refresh(person)}" value="#{messages['general.back']}" view="/page/person/personList.xhtml" id="back"/>
+				</s:decorate>       
+			</rich:panel>
+		</h:form>	
+	</ui:define>	
+</ui:composition>		

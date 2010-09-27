@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://jboss.com/products/seam/taglib"
+		xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html" xmlns:rich="http://richfaces.org/rich"
+		xmlns:a="http://richfaces.org/a4j" template="/layout/template.xhtml">
+		
+	<ui:define name="center">
+		<a:form id="personListForm">
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGroup>
+						<h:outputFormat value="#{messages['person.list']}" />
+					</h:panelGroup>
+				</f:facet>
+	        
+				<rich:extendedDataTable value="#{personListService.resultList}" var="person" sortMode="single" rows="#{personListService.maxResults}" 
+						onRowMouseOver="this.className='extdt-row-selected'"
+		        		onRowMouseOut="this.className=''"
+		        		id="personListTable">
+					<f:facet name="header">
+						<h:panelGroup>
+							<h:commandLink action="#{personListService.setSelectedEntity(null)}" style="float:left;">
+								<h:outputText value="#{messages['person']}" />
+								<h:outputText value="&#160;" />
+								<h:outputText value="#{messages['general.create']}" />
+							</h:commandLink>
+							
+							<h:selectOneMenu value="#{personListService.maxResults}" id="maxResults" style="float:right;">
+								<s:selectItems var="option" value="#{personListService.maxResultsOption}" label="#{option}"/>
+								<a:support event="onchange" action="#{personListService.refresh}" reRender="personListTable"/> 
+							</h:selectOneMenu>
+						</h:panelGroup>
+					</f:facet>
+					
+					<rich:column sortable="true" sortBy="#{person.firstname}" filterBy="#{person.firstname}"  label="#{messages['person.firstname']}" width="50%">
+						<f:facet name="header">#{messages['person.firstname']}</f:facet>
+						<h:outputText value="#{person.firstname}" />
+					</rich:column>
+					
+					<rich:column sortable="true" sortBy="#{person.lastname}" filterBy="#{person.lastname}"  label="#{messages['person.lastname']}" width="50%">
+						<f:facet name="header">#{messages['person.lastname']}</f:facet>
+						<h:outputText value="#{person.lastname}" />
+					</rich:column>
+					
+					<a:support event="onRowClick" action="#{personListService.setSelectedEntity(person)}"/>
+					
+					<f:facet name="footer">
+						<rich:datascroller for="personListTable"  id="personListTableScroller" />
+					</f:facet>
+				</rich:extendedDataTable>
+			</rich:panel>
+		</a:form>
+	
+	</ui:define>
+</ui:composition>				

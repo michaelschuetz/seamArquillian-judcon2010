@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>org.jboss.seam</groupId>
+		<artifactId>parent</artifactId>
+		<version>2.2.1.CR2</version>
+	</parent>
+
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.acme</groupId>
+	<artifactId>seamArquillian</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>seamArquillian</name>
+
+	<properties>
+		<version.seam>2.2.1.CR2</version.seam>
+		<version.jboss.app>5</version.jboss.app>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<name>JBoss Maven Repository</name>
+			<url>http://repository.jboss.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.akquinet.jbosscc</groupId>
+			<artifactId>jbosscc-needle-ejb</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>de.akquinet.jbosscc</groupId>
+			<artifactId>jbosscc-needle-seam</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.5.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.5.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>2.2.1</version>
+					<configuration>
+						<ejbVersion>3.0</ejbVersion>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<forkMode>once</forkMode>
+						<argLine>-enableassertions</argLine>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.acme</groupId>
+				<artifactId>seamArquillian-datamodel</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>com.acme</groupId>
+				<artifactId>seamArquillian-bootstrap</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>com.acme</groupId>
+				<artifactId>seamArquillian-ejb</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>com.acme</groupId>
+				<artifactId>seamArquillian-war</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<type>war</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.seam</groupId>
+				<artifactId>jboss-seam</artifactId>
+				<version>${version.seam}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.jbossas</groupId>
+				<artifactId>jboss-as-component-matrix</artifactId>
+				<type>pom</type>
+				<scope>import</scope>
+				<version>5.1.0.GA</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.6.1</version>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-report-plugin
+				</artifactId>
+				<version>2.5</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+
+	<profiles>
+		<profile>
+			<id>development</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- development mode (disable in production) -->
+				<seam.debug>true</seam.debug>
+
+				<!-- datasource configuration -->
+				<jdbc.connection.url>jdbc:...</jdbc.connection.url>
+				<jdbc.driver.class>...</jdbc.driver.class>
+				<jdbc.user>user</jdbc.user>
+				<jdbc.password>pass</jdbc.password>
+				<min.pool.size>1</min.pool.size>
+				<max.pool.size>10</max.pool.size>
+
+				<!-- package exploded war file -->
+				<exploded.war.file>true</exploded.war.file>
+
+				<!-- development mode (exclude in production) -->
+				<exclude.bootstrap>false</exclude.bootstrap>
+
+				<!-- persistence.xml configuration -->
+				<hibernate.dialect>
+					org.hibernate.dialect.HSQLDialect
+				</hibernate.dialect>
+				<hibernate.hbm2ddl.auto>
+					create-drop
+				</hibernate.hbm2ddl.auto>
+				<hibernate.show_sql>
+					true
+				</hibernate.show_sql>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>test</id>
+
+			<properties>
+				<!-- development mode (disable in production) -->
+				<seam.debug>false</seam.debug>
+
+				<!-- datasource configuration   -->
+				<jdbc.connection.url>jdbc:...</jdbc.connection.url>
+				<jdbc.driver.class>...</jdbc.driver.class>
+				<jdbc.user>user</jdbc.user>
+				<jdbc.password>pass</jdbc.password>
+				<min.pool.size>1</min.pool.size>
+				<max.pool.size>10</max.pool.size>
+
+				<!-- package exploded war file -->
+				<exploded.war.file>false</exploded.war.file>
+
+				<!-- development mode (exclude in production) -->
+				<exclude.bootstrap>true</exclude.bootstrap>
+
+				<!-- persistence.xml configuration -->
+				<hibernate.dialect>
+					org.hibernate.dialect.HSQLDialect
+				</hibernate.dialect>
+				<hibernate.hbm2ddl.auto>
+					validate
+				</hibernate.hbm2ddl.auto>
+				<hibernate.show_sql>
+					false
+				</hibernate.show_sql>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+
+			<properties>
+				<!-- development mode (disable in production) -->
+				<seam.debug>false</seam.debug>
+
+				<!-- datasource configuration   -->
+				<jdbc.connection.url>jdbc:...</jdbc.connection.url>
+				<jdbc.driver.class>...</jdbc.driver.class>
+				<jdbc.user>user</jdbc.user>
+				<jdbc.password>pass</jdbc.password>
+				<min.pool.size>10</min.pool.size>
+				<max.pool.size>50</max.pool.size>
+
+				<!-- development mode (exclude in production) -->
+				<exclude.bootstrap>true</exclude.bootstrap>
+
+				<!-- package exploded war file -->
+				<exploded.war.file>false</exploded.war.file>
+
+				<!-- persistence.xml configuration -->
+				<hibernate.dialect>
+					org.hibernate.dialect.HSQLDialect
+				</hibernate.dialect>
+				<hibernate.hbm2ddl.auto>
+					validate
+				</hibernate.hbm2ddl.auto>
+				<hibernate.show_sql>
+					false
+				</hibernate.show_sql>
+			</properties>
+		</profile>
+	</profiles>
+  <modules>
+    <module>seamArquillian-datamodel</module>
+    <module>seamArquillian-bootstrap</module>
+    <module>seamArquillian-ejb</module>
+    <module>seamArquillian-war</module>
+    <module>seamArquillian-ear</module>
+  </modules>
+</project>
