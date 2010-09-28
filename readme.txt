@@ -12,6 +12,8 @@ Versions
 * Seam 2.2.1.CR2
 * Maven3 beta2
 
-Tested against jboss-6.0.0.20100911-M5
+Application successful runs against jboss-5.1.0.GA.
+
+Does not run against against jboss-6.0.0.20100911-M5. Issues with JSF2.
 
 #############
