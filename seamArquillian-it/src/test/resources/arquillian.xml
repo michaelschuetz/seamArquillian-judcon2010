@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<arquillian xmlns="http://jboss.com/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:jboss="urn:arq:org.jboss.arquillian.container.jbossas.managed_5_1">
+
+    <engine>
+        <deploymentExportPath>target/</deploymentExportPath>
+    </engine>
+
+    <!-- Konfiguration für JBossAS Managed Container -->
+    <jboss:container>
+        <!-- Relativ. In appropriate profile, container will be installed automatically.  -->
+        <jbossHome>target\jboss-5.1.0.GA</jbossHome>
+        <!-- <javaHome>/usr/lib/jvm/java-6-openjdk</javaHome> default: JAVA_HOME-->
+        <!--<profileName>default</profileName>-->
+        <bindAddress>127.0.0.1</bindAddress>
+        <!-- WARN: this is not the bind port, but connect port. Bind port must be set in jboss xml config-->
+        <httpPort>8080</httpPort>
+    </jboss:container>
+
+</arquillian>

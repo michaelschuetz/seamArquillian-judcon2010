@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.acme</groupId>
+		<artifactId>seamArquillian</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>seamArquillian-it</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>seamArquillian - Integration Tests</name>
+	
+	<properties>
+		<arquillian.version>1.0.0.Alpha3</arquillian.version>
+        <jboss-server-manager.version>1.0.3.GA</jboss-server-manager.version>
+		<jboss.version>5.1.0.GA</jboss.version>
+    </properties>
+	
+	<dependencies>
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.seam</groupId>
+            <artifactId>jboss-seam</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian</groupId>
+            <artifactId>arquillian-junit</artifactId>
+			<version>${arquillian.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+	</dependencies>
+
+	<build>
+        <plugins>
+            <!-- Tests sind standardmäßig deaktiviert. -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+	
+	<profiles>
+
+        <!-- This profile activates integration tests. Additionally, specific container profile needs to be set.
+        Hudson: "mvn verify -Pit-tests,managed" (Container will be started and stopped)
+        local: "mvn verify -Pit-tests,remote" (runs against running container)
+        -->
+        <profile>
+            <id>it-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>surefire-it</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                </configuration>
+                            </execution>
+                        </executions>
+
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- JBoss AS 5.1 Remote Container für lokale Entwicklung. Tests gegen gestarteten Container. -->
+        <profile>
+            <id>remote</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-jbossas-remote-5.1</artifactId>
+                    <version>${arquillian.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.jbossas</groupId>
+                    <artifactId>jboss-as-client</artifactId>
+                    <version>${jboss.version}</version>
+                    <type>pom</type>
+                </dependency>
+            </dependencies>
+        </profile>
+	</profiles>
+</project>

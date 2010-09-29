@@ -291,5 +291,6 @@
     <module>seamArquillian-ejb</module>
     <module>seamArquillian-war</module>
     <module>seamArquillian-ear</module>
+	<module>seamArquillian-it</module>
   </modules>
 </project>

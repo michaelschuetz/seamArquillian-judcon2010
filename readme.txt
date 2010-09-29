@@ -16,4 +16,20 @@ Application successful runs against jboss-5.1.0.GA.
 
 Does not run against against jboss-6.0.0.20100911-M5. Issues with JSF2.
 
+Than: adding it test harness:
+arquillian version 1.0.0.Alpha3
+
 #############
+
+focus on practical experiences
+
+szenarios:
+1)
+Seam
+
+2)
+JMS
+JMS 4.2.4 - AS 5.1 
+
+3)
+SAP-Anbindung
