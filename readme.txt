@@ -19,6 +19,9 @@ Does not run against against jboss-6.0.0.20100911-M5. Issues with JSF2.
 Than: adding it test harness:
 arquillian version 1.0.0.Alpha3
 
+ Hudson: "mvn verify -Pit-tests,managed" (Container will be started and stopped)
+        local: "mvn verify -Pit-tests,remote" (runs against running container)
+        
 #############
 
 focus on practical experiences
