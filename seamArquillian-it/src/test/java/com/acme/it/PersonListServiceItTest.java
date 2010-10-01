@@ -12,6 +12,9 @@ import com.acme.logic.webapp.PersonListServiceBean;
 import com.acme.model.Gender;
 import com.acme.model.Person;
 import org.jboss.arquillian.api.Deployment;
+import org.jboss.seam.Component;
+import org.jboss.seam.deployment.ComponentsXmlDeploymentHandler;
+import org.jboss.seam.security.Credentials;
 import org.jboss.shrinkwrap.api.Archive;
 import org.junit.Test;
 
@@ -36,5 +39,13 @@ public class PersonListServiceItTest extends AbstractSeamItTest {
         List<Person> results = personListService.getResultList();
         assertEquals(64, results.size());
         LOG.info(results.toString());
+
+        Credentials credentials = (Credentials)Component.getInstance("credentials");
+
+        credentials.setUsername("sdfds");
+
+        assertEquals(credentials.getUsername(), "sdf");
+
+
     }
 }
