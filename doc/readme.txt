@@ -8,7 +8,7 @@ contributor, twitter, profile
 
 #2
 - agenda
---> focus on practical experiences
+--> focus on practical experiences. success story
 introduction
 live demo
 status
@@ -27,6 +27,22 @@ combination
 1)SAP-Anbindung
 2) JMS 4.2.4 - AS 5.1
 3) Seam-Integration --> focus
+
+focus on
+container profiles uses -->
+local deployment: remote --> fast (against running AS)
+continous deployment (hudson): managed --> lifecycle support, starts and stops container
+we do use Hudson
+
+
+#CODE live code
+
+#7
+whats next | Roadmap--
+--> API support --> where to put it?
+--> Extending --> @In Enricher
+--> Arquillian base in lots of open source porjects CDI/Weld Jboss EJBimpl,...
+
 
 ### --> anzeige von CODE, demo das Archiv auf Platte zeigen 
 
