@@ -15,7 +15,7 @@
 	<name>seamArquillian - Integration Tests</name>
 	
 	<properties>
-		<arquillian.version>1.0.0.Alpha3</arquillian.version>
+		<arquillian.version>1.0.0.Alpha4</arquillian.version>
         <jboss-server-manager.version>1.0.3.GA</jboss-server-manager.version>
 		<jboss.version>5.1.0.GA</jboss.version>
     </properties>
