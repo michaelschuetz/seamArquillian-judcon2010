@@ -12,13 +12,17 @@ import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.runner.RunWith;
+
 /**
- * Seam2 Base class for integration tests. Will be executed within container. Test includes required files, only.
+ * Seam 2 Base class for integration tests. Will be executed within container. Test includes required files, only.
  *
  * @author <a href="mailto:michaelschuetz83@gmail.com">Michael Schuetz</a>
  */
 @RunWith(Arquillian.class)
 public abstract class AbstractSeamItTest {
+
+    private static final String MAVEN_ARTIFACT_SEAM = "org.jboss.seam:jboss-seam:2.2.1.CR2";
+    private static final String MAVEN_ARTIFACT_JBOSS_EL = "org.jboss.el:jboss-el:1.0_02.CR5";
 
     protected static final Logger LOG = Logger.getLogger(AbstractSeamItTest.class.getName());
 
@@ -31,10 +35,11 @@ public abstract class AbstractSeamItTest {
 
         // EJB-JAR
         final JavaArchive ejb = ShrinkWrap.create(JavaArchive.class, "test.jar")
-                // test dependent classes
+                // specific test dependent classes
                 .addClasses(clazzes)
                 .addClasses(
-                        AbstractSeamItTest.class, AbstractEntityListService.class, AbstractEntityListServiceBean.class, AbstractEntity.class)
+                        AbstractSeamItTest.class, SeamUtil.class, AbstractEntityListService.class, AbstractEntityListServiceBean.class,
+                        AbstractEntity.class)
 
                 .addResource("ejb/seam.properties", "seam.properties")
                 .addResource("ejb/components.properties", "components.properties")
@@ -45,8 +50,8 @@ public abstract class AbstractSeamItTest {
         final EnterpriseArchive ear = ShrinkWrap.create(EnterpriseArchive.class, "test.ear")
                 .addModule(ejb)
                 .addModule(war)
-               .addModule(MavenArtifactResolver.resolve("org.jboss.seam:jboss-seam:2.2.1.CR2"))
-                .addLibrary(MavenArtifactResolver.resolve("org.jboss.el:jboss-el:1.0_02.CR5"));
+                .addModule(MavenArtifactResolver.resolve(MAVEN_ARTIFACT_SEAM))
+                .addLibrary(MavenArtifactResolver.resolve(MAVEN_ARTIFACT_JBOSS_EL));
 
         LOG.info(ear.toString(true));
         return ear;
