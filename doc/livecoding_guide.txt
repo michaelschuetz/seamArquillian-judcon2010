@@ -1,0 +1,18 @@
+########## BRAINSTORM
+
+#coding1 ejb injected Seam test  PersonListServiceItTest.java
+1) show IDE
+2) mvn clean install
+3) deploy and start AS
+4) show app: login, list person
+
+
+###########
+#coding2
+
+###########
+
+#containers
+1) default AS5.1 remote (development)
+2) AS5.1 managed (CI)
+3) openEJB, GF, Embedded

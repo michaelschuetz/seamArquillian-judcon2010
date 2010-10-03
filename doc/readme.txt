@@ -1,3 +1,5 @@
+########## BRAINSTORM
+
                         presentation
                         =========================
 slides
@@ -15,6 +17,9 @@ status
 
 
 #3 seam2
+
+#3.1 Seam2?? In think it's out??
+Seam3, CDI, Weld, Java EE 6, JSF 2, JBossAS 6
 
 #4 arquillian
 -- Aslak Knutsen
@@ -84,6 +89,11 @@ live demo:
 * creating PersonListServiceItTest
 * using arquillian for tdd
 * changed PersonListService class
+
+30 mins
+
+1) ejb based injection
+2) seam based          --> integration. perform log in    [wouldn't be alowed to access seam ejb component,]
 
 Seam2 injection --> component.getInstance
 
