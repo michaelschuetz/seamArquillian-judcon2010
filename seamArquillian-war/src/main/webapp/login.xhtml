@@ -15,9 +15,9 @@
     			<f:facet name="header">#{messages['general.login']}</f:facet>
            	    <h:panelGrid columns="2" columnClasses="name,value">
                    	<h:outputLabel for="username">#{messages['general.user']}:</h:outputLabel>
-                   	<h:inputText id="username" value="#{identity.username}"/>
+                   	<h:inputText id="username" value="#{credentials.username}"/>
                    	<h:outputLabel for="password">#{messages['general.password']}:</h:outputLabel>
-                   	<h:inputSecret id="password" value="#{identity.password}"/>
+                   	<h:inputSecret id="password" value="#{credentials.password}"/>
                    	
                    	<s:fragment>&#160;</s:fragment>
                    	<h:commandButton value="#{messages['general.login']}" action="#{identity.login}" id="login-button"/>

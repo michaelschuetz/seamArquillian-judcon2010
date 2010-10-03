@@ -17,7 +17,7 @@
 		
 		<rich:toolBarGroup location="right" id="tool-bar-group-right">
 			<h:outputText value="&#160;" />
-			<h:commandLink value="#{messages['general.logout']}" action="#{identity.logout}" id="logout-link" rendered="#{identity.loggedIn}"/>
+			<h:commandLink value="#{messages['general.logout']} (#{identity.username})" action="#{identity.logout}" id="logout-link" rendered="#{identity.loggedIn}"/>
 		</rich:toolBarGroup>
 	</rich:toolBar>
 </h:form>
