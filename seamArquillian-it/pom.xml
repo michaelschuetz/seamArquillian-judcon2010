@@ -57,7 +57,7 @@
 
 	<build>
         <plugins>
-            <!-- Tests sind standardmäßig deaktiviert. -->
+            <!-- Tests are disabled, by default. -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.4.3</version>
@@ -78,11 +78,10 @@
 	<profiles>
 
         <!-- This profile activates integration tests. Additionally, specific container profile needs to be set.
-        Hudson: "mvn verify -Pit-tests,managed" (Container will be started and stopped)
-        local: "mvn verify -Pit-tests,remote" (runs against running container)
+        example for developing against JBoss AS5.1: "mvn verify -Pit,jbossas51_remote" (against running container)
         -->
         <profile>
-            <id>it-tests</id>
+            <id>it</id>
             <build>
                 <plugins>
                     <plugin>
@@ -109,9 +108,9 @@
             </build>
         </profile>
 
-        <!-- JBoss AS 5.1 Remote Container für lokale Entwicklung. Tests gegen gestarteten Container. -->
+        <!-- JBoss AS 5.1 Remote Container für locale development. Tests will run against started container. -->
         <profile>
-            <id>remote</id>
+            <id>jbossas51_remote</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -129,28 +128,5 @@
                 </dependency>
             </dependencies>
         </profile>
-
-
-
-        <profile>
-            <id>testProfile</id>
-
-            <properties>
-                <version.junit.new>4.8.1</version.junit.new>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>${version.junit}</version>
-                </dependency>
-
-            </dependencies>
-
-        </profile>
-
-
-
 	</profiles>
 </project>
