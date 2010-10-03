@@ -103,4 +103,10 @@ add JAr
 Remote container
 
 add repo
-
+############
+what'S next:
+- @In Enricher
+- JSFUnit/HTMLUnit
+- Selenium
+- more containers
+- multiple deploy against containers
