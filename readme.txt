@@ -21,7 +21,6 @@ Getting started:
         
 TODO:
 * AS 5.1 managed container config
-* Glassfish/OpenEJB container config
 
 
 
