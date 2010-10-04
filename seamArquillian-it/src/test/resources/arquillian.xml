@@ -10,8 +10,9 @@
 
     <!-- Konfiguration für JBossAS Managed Container -->
     <jboss:container>
-        <!-- Relativ. In appropriate profile, container will be installed automatically.  -->
-        <jbossHome>target\jboss-5.1.0.GA</jbossHome>
+        <!-- TODO: Download container automatically and provide relative path.  -->
+        <!-- For AS managed profile.  -->
+        <jbossHome>\user\server\jboss-5.1.0.GA</jbossHome>
         <!-- <javaHome>/usr/lib/jvm/java-6-openjdk</javaHome> default: JAVA_HOME-->
         <!--<profileName>default</profileName>-->
         <bindAddress>127.0.0.1</bindAddress>
