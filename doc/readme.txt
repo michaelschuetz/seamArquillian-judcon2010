@@ -56,8 +56,18 @@ Multiple Containers
 
 ##########
 
+ShrinkWrap, Skip the Build!
+Programmatic archive creation 
+Simple API
+Micro deployments
+IDE incremental compilation
+– Save and re-run
+– Skip the Build!
+
+##########
+
 #5 Java EE testing
-combination
+combination --> picture "Arquillian Architecture" , ppt, slide10
 
 ##########
 
@@ -93,11 +103,30 @@ Seam 2 + Arquilliab Roadmap
 
 ############
 
+Multiple containers:
+
+http://docs.jboss.org/arquillian/reference/latest/en-US/html/containers.html#d0e708
+
+############
+
 Future:
+More containers
+–  Weblogic, Spring, GlassFish Remote, Hibernate, Drools...
+
 - Frameworks: JSFUnit/HTMLUnit, Selenium
 - more containers
 - multiple deploy against containers
 - cloud deployment
+
+CirrAS, JClouds
+– Start and deploy your test cloud
+Performance Monitor
+GUI - Component Coverage
+Package-time class manipulation (Byteman, Javassist, AOP)
+– Exception, Callback, Assertion injection
+Tooling – JBoss Developer Studio
+Framework integration ?
+– JSFUnit, Selenium, HTTPUnit, easyB, DBUnit
 
 ############
 
