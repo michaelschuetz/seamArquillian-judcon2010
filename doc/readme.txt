@@ -35,10 +35,24 @@ seam2
 #3.1 Seam2?? In think it's out??
 Seam3, CDI, Weld, Java EE 6, JSF 2, JBossAS 6
 
+not final: Seam3, JBossAS6 
+
+experiences
+Seam 3 modules far away from Seam 2 complexity (security)
+
 ##########
 
 #4 arquillian
 -- Aslak Knutsen
+Archives
+– ShrinkWrap
+Multiple Test frameworks
+– JUnit, TestNG
+Multiple Run modes
+– In container, as client
+Multiple Enrichers
+– CDI, EJB, Resources, MC
+Multiple Containers
 
 ##########
 
@@ -49,33 +63,42 @@ combination
 
 #6 Real practice
 3 szenarios
-1)SAP-Anbindung
-2) JMS 4.2.4 - AS 5.1
-3) Seam-Integration --> focus
+1) SAP-Integration --> JCA container configuration
+2) JMS 4.2.4 - AS 5.1 --> multiple containers, tests against AS5.1
+3) Seam 2 -Integration --> focus
+
+##########
+
+practice: usecase 3)
 
 focus on
 container profiles uses -->
 local deployment: remote --> fast (against running AS)
 continous deployment (hudson): managed --> lifecycle support, starts and stops container
 we do use Hudson
+AS 5.1/GateIn
 
 ##########
 
 #CODE live code
+1) ejb injected Seam test
+2) native Seam injection
 
 ##########
 
-#7
-whats next | Roadmap--
+Seam 2 + Arquilliab Roadmap
 --> API support --> where to put it?
 --> Extending --> @In Enricher
 --> Arquillian base in lots of open source porjects CDI/Weld Jboss EJBimpl,...
 
 ############
 
-what'S next:
-- @In Enricher
-- JSFUnit/HTMLUnit
-- Selenium
+Future:
+- Frameworks: JSFUnit/HTMLUnit, Selenium
 - more containers
 - multiple deploy against containers
+- cloud deployment
+
+############
+
+Q&A
