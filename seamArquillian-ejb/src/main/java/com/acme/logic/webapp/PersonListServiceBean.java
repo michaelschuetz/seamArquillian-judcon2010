@@ -52,7 +52,7 @@ public class PersonListServiceBean extends AbstractEntityListServiceBean<Person>
 	}
 
 	@Override
-	@Observer( { "com.acme.persited.Person",
+	@Observer( { "com.acme.persisted.Person",
 			"com.acme.deleted.Person" })
 	public void refresh() {
 		resultList = null;
@@ -77,7 +77,7 @@ public class PersonListServiceBean extends AbstractEntityListServiceBean<Person>
 	@Destroy
 	@Remove
 	public void destroy() {
-		log.debug("destry component #0", this);
+		log.debug("destroy component #0", this);
 	}
 
 }
