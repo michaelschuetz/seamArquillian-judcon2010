@@ -1,5 +1,15 @@
-Michael Schuetz - Seam2: Real integration testing with Arquillian
+Title
+#####
+Seam2 - Real integration testing with Arquillian
 
+
+Target audience
+###############
+Architects, JBoss developers, JBoss Seam users
+
+
+Abstract
+########
 The main focus of JBoss' Open Source project Arquillian is to provide an all in one test harness that abstracts away all container lifecycle and deployment from the test logic so developers can easily produce a broad range of integration tests for their enterprise Java applications.
 
 First, I'll present features of Arquillian, and its advantages over common Java EE testing approaches.
@@ -9,3 +19,12 @@ Then I'll show how to setup an Arquillian-based integration test within JBoss Se
 Finally, I'll perform some live coding to develop simple integration test which will than be executed both from command line and IDE against multiple containers.
 
 Attendees will be able to easily try out the code for their own as complete sample project will be hosted at github.
+
+
+Speaker
+#######
+Michael Schütz - Software Engineer, akquinet AG, Berlin
+
+Michael is working for akquinet AG in Berlin and is member of the JBoss Competence Center. He is mainly focused on Java Enterprise architectures and technologies for years now. He is founder and moderator of Seam platform at XING and regularly contributes to JBoss Open Source projects.
+
+Michael's professional interests include Seam/CDI, Java EE testing, Java EE Cloud Hosting and Git.
