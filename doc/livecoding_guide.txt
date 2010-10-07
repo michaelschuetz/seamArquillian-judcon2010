@@ -1,18 +1,50 @@
-########## BRAINSTORM
+Live coding
+###########
 
-#coding1 ejb injected Seam test  PersonListServiceItTest.java
-1) show IDE
-2) mvn clean install
-3) deploy and start AS
+
+## introducing project
+1) show IDE, packages
+2) run container (mvn install and deploy was done)
+3) show AbstractSeamTest
 4) show app: login, list person
 
 
-###########
-#coding2
+## coding 1: ejb injected Seam test (PersonListServiceItTest.java)
+1) start coding with skeleton
+	public class PersonListServiceItTest{
 
-###########
+	}
+2) @Deployment
+3) @EJB
+4) @Test
+5) assert count of persons
+6) print every single Person on console
+7) show archive in file system
 
-#containers
-1) default AS5.1 remote (development)
-2) AS5.1 managed (CI)
-3) openEJB, GF, Embedded
+
+## coding 2: native Seam injection (LogInTest.java)
+1) got to browser, refresh, show login and explain usecase
+2) start coding with skeleton
+	public class LogInTest extends AbstractSeamItTest {
+		private static final String LOGIN_NAME = "Tim";
+	
+		@Deployment
+		public static Archive<?> getDeployment() {
+			return getTestArchive(LogInTest.class);
+		}
+
+		@Test
+		public void testLogIn() {
+	
+		}
+	}
+3) seam inject components
+4) assert that logged off
+5) login
+6) assert that logged in
+7) JUnit Ignore PersonListServiceTest
+ 
+
+## configuration
+* AS 5.1 from command line
+* AS 5.1 managed
