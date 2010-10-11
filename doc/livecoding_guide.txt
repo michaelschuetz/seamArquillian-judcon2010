@@ -3,8 +3,8 @@ Live coding
 
 
 ## introducing project
-1) show IDE, packages
-2) run container (mvn install and deploy was done)
+1) run container (mvn install and deploy was done)
+2) show IDE, packages
 3) show AbstractSeamTest
 4) show app: login, list person
 
