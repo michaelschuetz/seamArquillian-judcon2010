@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public abstract class AbstractSeamItTest {
 
-    private static final String MAVEN_ARTIFACT_SEAM = "org.jboss.seam:jboss-seam:2.2.1.CR2";
+    private static final String MAVEN_ARTIFACT_SEAM = "org.jboss.seam:jboss-seam:2.2.1.FINAL";
     private static final String MAVEN_ARTIFACT_JBOSS_EL = "org.jboss.el:jboss-el:1.0_02.CR5";
 
     protected static final Logger LOG = Logger.getLogger(AbstractSeamItTest.class.getName());
